@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "strictNullChecks": true, 
+    "jsx": "react",
+    "jsxFactory": "h",
+    "noEmit": true
+  },
+  "include": ["src/app/**/*"]
+}
