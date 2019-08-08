@@ -16,7 +16,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "preact": "^8.4.2"
+    "preact": "^8.4.2",
+    "reset-css": "^4.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.5.0",
