@@ -18,6 +18,22 @@ module.exports = {
         test: /\.(ts|tsx)$/,
         loader: 'babel-loader',
         exclude: /node_modules/
+      },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'typings-for-css-modules-loader',
+            options: {
+              modules: true,
+              localIdentName: '[local]--[hash:base64:5]',
+              namedExport: true
+            }
+          }
+        ]
       }
     ]
   },
@@ -38,6 +54,6 @@ module.exports = {
     })
   ],
   resolve: {
-    extensions: ['.js', '.ts', '.tsx']
+    extensions: ['.js', '.ts', '.tsx', '.css']
   }
 }
