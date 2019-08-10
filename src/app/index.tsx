@@ -1,4 +1,8 @@
 import { h, render } from 'preact';
+import 'reset-css';
+import { Header } from './components/Header';
+import { Timer } from './components/Timer';
+
 const root = document.querySelector('#app');
 
 if ('serviceWorker' in navigator) {
@@ -15,9 +19,9 @@ if ('serviceWorker' in navigator) {
 
 if (root) {
   render((
-  	<div id="foo">
-  		<span>Hello world!</span>
-  		<button onClick={ e => alert("hi!") }>Click Me</button>
-  	</div>
+    <div id="foo">
+      <Header name="Grass Timer" />
+      <Timer />
+    </div>
   ), root);
 }
