@@ -2,6 +2,35 @@
   position: relative;
   text-align: center;
   background: #fff;
+  height: 294px;
+}
+
+.container::before {
+  position: absolute;
+  top: 8px;
+  right: 0;
+  left: 0;
+  margin: auto;
+  content: '';
+  display: block;
+  width: 278px;
+  height: 278px;
+  border-radius: 50%;
+  background: #fafbfc;
+}
+
+.container::after {
+  position: absolute;
+  top: 24px;
+  right: 0;
+  left: 0;
+  margin: auto;
+  content: '';
+  display: block;
+  width: 246px;
+  height: 246px;
+  border-radius: 50%;
+  background: #fff;
 }
 
 .container svg {
@@ -9,8 +38,8 @@
 }
 
 .container circle {
-  fill: #fff;
-  stroke: #1867c0;
+  fill: transparent;
+  stroke: #239a3b;
 }
 
 .time {

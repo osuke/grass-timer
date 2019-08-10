@@ -1,14 +1,17 @@
-import { h, Fragment } from 'preact';
-import { useReducer } from 'preact/hooks';
+import { h } from 'preact';
+import { useReducer, useEffect } from 'preact/hooks';
 import { Button } from '../Button';
 import { PieTimer } from '../PieTimer';
+import style from './style.css';
 
 interface ReducerState {
+  total: number;
   isPlay: boolean;
   sec: number;
 }
 
 const initialState: ReducerState = {
+  total: 1500,
   isPlay: false,
   sec: 0,
 };
@@ -39,6 +42,7 @@ const reducer = (state: ReducerState, action: Action) => {
       // tslint:disable-next-line
       console.log(action.type);
       return {
+        ...state,
         isPlay: false,
         sec: 0,
       };
@@ -60,6 +64,16 @@ let timerID: NodeJS.Timeout;
 
 export const Timer = ({}: {}) => {
   const [state, dispatch] = useReducer<ReducerState, Action>(reducer, initialState);
+  const { sec, isPlay, total} = state;
+
+  useEffect(() => {
+    if (sec === total && isPlay) {
+      dispatch({ type: 'PAUSE' });
+      clearInterval(timerID);
+      // tslint:disable-next-line
+      console.log(state);
+    }
+  });
 
   const increment = () => {
     timerID = setInterval(() => {
@@ -68,7 +82,7 @@ export const Timer = ({}: {}) => {
   };
 
   const start = () => {
-    if (state.isPlay) {
+    if (isPlay) {
       return;
     }
 
@@ -92,19 +106,25 @@ export const Timer = ({}: {}) => {
   };
 
   return (
-    <Fragment>
+    <div className={style.container}>
       <PieTimer
         radius={130}
         width={16}
-        total={20}
-        elapsed={state.sec}
+        total={total}
+        elapsed={sec}
       />
-      <Button callback={reset}>RESET</Button>
-      {state.isPlay ? (
-        <Button callback={stop}>STOP</Button>
-      ) : (
-        <Button callback={start}>START</Button>
-      )}
-    </Fragment>
+      <div className={style.buttons}>
+        <div>
+          <Button callback={reset}>RESET</Button>
+        </div>
+        <div>
+          {isPlay ? (
+            <Button callback={stop}>STOP</Button>
+          ) : (
+            <Button callback={start}>START</Button>
+          )}
+        </div>
+      </div>
+    </div>
   );
 };
