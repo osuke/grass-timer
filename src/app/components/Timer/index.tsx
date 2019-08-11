@@ -17,12 +17,21 @@ const initialState: ReducerState = {
 };
 
 interface Action {
-  type: 'START' | 'PAUSE' | 'RESET' | 'INCREMENT';
+  type: 'START' | 'RESUME' | 'PAUSE' | 'RESET' | 'INCREMENT';
 }
 
 const reducer = (state: ReducerState, action: Action) => {
   switch (action.type) {
     case 'START':
+      // tslint:disable-next-line
+      console.log(action.type);
+      return {
+        ...state,
+        isPlay: true,
+        sec: 0,
+      };
+
+    case 'RESUME':
       // tslint:disable-next-line
       console.log(action.type);
       return {
@@ -90,6 +99,11 @@ export const Timer = ({}: {}) => {
     increment();
   };
 
+  const reStart = () => {
+    dispatch({ type: 'RESUME' });
+    increment();
+  };
+
   const stop = () => {
     // tslint:disable-next-line
     console.log(timerID);
@@ -102,6 +116,14 @@ export const Timer = ({}: {}) => {
 
     if (timerID) {
       clearInterval(timerID);
+    }
+  };
+
+  const renderStartButton = () => {
+    if (sec === total || sec === 0) {
+      return <Button callback={start}>START</Button>;
+    } else {
+      return <Button callback={reStart}>RESUME</Button>;
     }
   };
 
@@ -121,7 +143,7 @@ export const Timer = ({}: {}) => {
           {isPlay ? (
             <Button callback={stop}>STOP</Button>
           ) : (
-            <Button callback={start}>START</Button>
+            renderStartButton()
           )}
         </div>
       </div>
