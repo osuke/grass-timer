@@ -1,73 +1,21 @@
 import { h } from 'preact';
 import { useReducer, useEffect } from 'preact/hooks';
+import {
+  ReducerState,
+  initialState,
+  reducer,
+ } from '../../reducer';
+import {
+  Action,
+  startTimer,
+  resumeTimer,
+  pauseTimer,
+  resetTimer,
+  incrementTimer,
+} from '../../action';
 import { Button } from '../Button';
 import { PieTimer } from '../PieTimer';
 import style from './style.css';
-
-interface ReducerState {
-  total: number;
-  isPlay: boolean;
-  sec: number;
-}
-
-const initialState: ReducerState = {
-  total: 1500,
-  isPlay: false,
-  sec: 0,
-};
-
-interface Action {
-  type: 'START' | 'RESUME' | 'PAUSE' | 'RESET' | 'INCREMENT';
-}
-
-const reducer = (state: ReducerState, action: Action) => {
-  switch (action.type) {
-    case 'START':
-      // tslint:disable-next-line
-      console.log(action.type);
-      return {
-        ...state,
-        isPlay: true,
-        sec: 0,
-      };
-
-    case 'RESUME':
-      // tslint:disable-next-line
-      console.log(action.type);
-      return {
-        ...state,
-        isPlay: true,
-      };
-
-    case 'PAUSE':
-      // tslint:disable-next-line
-      console.log(action.type);
-      return {
-        ...state,
-        isPlay: false,
-      };
-
-    case 'RESET':
-      // tslint:disable-next-line
-      console.log(action.type);
-      return {
-        ...state,
-        isPlay: false,
-        sec: 0,
-      };
-
-    case 'INCREMENT':
-      // tslint:disable-next-line
-      console.log(action.type);
-      return {
-        ...state,
-        sec: state.sec + 1,
-      };
-
-    default:
-      return state;
-  }
-};
 
 let timerID: NodeJS.Timeout;
 
@@ -77,7 +25,7 @@ export const Timer = ({}: {}) => {
 
   useEffect(() => {
     if (sec === total && isPlay) {
-      dispatch({ type: 'PAUSE' });
+      dispatch(pauseTimer());
       clearInterval(timerID);
       // tslint:disable-next-line
       console.log(state);
@@ -86,7 +34,7 @@ export const Timer = ({}: {}) => {
 
   const increment = () => {
     timerID = setInterval(() => {
-      dispatch({ type: 'INCREMENT' });
+      dispatch(incrementTimer());
     }, 1000);
   };
 
@@ -95,24 +43,24 @@ export const Timer = ({}: {}) => {
       return;
     }
 
-    dispatch({ type: 'START' });
+    dispatch(startTimer());
     increment();
   };
 
   const reStart = () => {
-    dispatch({ type: 'RESUME' });
+    dispatch(resumeTimer());
     increment();
   };
 
   const stop = () => {
     // tslint:disable-next-line
     console.log(timerID);
-    dispatch({ type: 'PAUSE' });
+    dispatch(pauseTimer());
     clearInterval(timerID);
   };
 
   const reset = () => {
-    dispatch({ type: 'RESET' });
+    dispatch(resetTimer());
 
     if (timerID) {
       clearInterval(timerID);

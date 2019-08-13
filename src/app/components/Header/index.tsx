@@ -1,4 +1,5 @@
-import { h, render } from 'preact';
+import { h } from 'preact';
+import { Link } from 'preact-router';
 import style from './style.css';
 
 export interface Props {
@@ -11,7 +12,10 @@ const defaultProps: Partial<Props> = {
 
 const Header = ({ name }: Props) => (
   <div className={style.container}>
-    <h1 class="name">{name}</h1>
+    <nav>
+      <div className={style.tab}><Link href="/" >Home</Link></div>
+      <div className={style.tab}><Link href="/activity">Activity</Link></div>
+    </nav>
   </div>
 );
 

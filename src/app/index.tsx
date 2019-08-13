@@ -1,7 +1,8 @@
-import { h, render } from 'preact';
+import { h, render, createContext } from 'preact';
+import Router from 'preact-router';
 import 'reset-css';
-import { Header } from './components/Header';
-import { Timer } from './components/Timer';
+import { Home } from './components/Home';
+import { Activity } from './components/Activity';
 
 const root = document.querySelector('#app');
 
@@ -17,11 +18,13 @@ if ('serviceWorker' in navigator) {
   });
 }
 
+const Root = () => (
+  <Router>
+    <Home path="/" />
+    <Activity path="/activity" />
+  </Router>
+);
+
 if (root) {
-  render((
-    <div id="foo">
-      <Header name="Grass Timer" />
-      <Timer />
-    </div>
-  ), root);
+  render(<Root />, root);
 }

@@ -1,6 +1,12 @@
 .container {
   text-align: center;
-  background: #24292e;
   padding: 16px 0;
   color: #fff;
+}
+.tab {
+  display: inline;
+  padding: 0 8px;
+}
+.tab a {
+  color: #333;
 }
