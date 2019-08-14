@@ -1,18 +1,13 @@
 import { h } from 'preact';
-import { useReducer, useEffect } from 'preact/hooks';
+import { useEffect, useContext } from 'preact/hooks';
 import {
-  ReducerState,
-  initialState,
-  reducer,
- } from '../../reducer';
-import {
-  Action,
   startTimer,
   resumeTimer,
   pauseTimer,
   resetTimer,
   incrementTimer,
 } from '../../action';
+import { GlobalStateContext } from '../Provider';
 import { Button } from '../Button';
 import { PieTimer } from '../PieTimer';
 import style from './style.css';
@@ -20,7 +15,7 @@ import style from './style.css';
 let timerID: NodeJS.Timeout;
 
 export const Timer = ({}: {}) => {
-  const [state, dispatch] = useReducer<ReducerState, Action>(reducer, initialState);
+  const { state, dispatch } = useContext(GlobalStateContext);
   const { sec, isPlay, total} = state;
 
   useEffect(() => {
