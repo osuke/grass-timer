@@ -22,8 +22,6 @@ export const initialState: ReducerState = {
 export const reducer = (state: ReducerState, action: Action) => {
   switch (action.type) {
     case START_TIMER:
-      // tslint:disable-next-line
-      console.log(action.type);
       return {
         ...state,
         isPlay: true,
@@ -31,24 +29,18 @@ export const reducer = (state: ReducerState, action: Action) => {
       };
 
     case RESUME_TIMER:
-      // tslint:disable-next-line
-      console.log(action.type);
       return {
         ...state,
         isPlay: true,
       };
 
     case PAUSE_TIMER:
-      // tslint:disable-next-line
-      console.log(action.type);
       return {
         ...state,
         isPlay: false,
       };
 
     case RESET_TIMER:
-      // tslint:disable-next-line
-      console.log(action.type);
       return {
         ...state,
         isPlay: false,
@@ -56,8 +48,6 @@ export const reducer = (state: ReducerState, action: Action) => {
       };
 
     case INCREMENT_TIMER:
-      // tslint:disable-next-line
-      console.log(action.type);
       return {
         ...state,
         sec: state.sec + 1,

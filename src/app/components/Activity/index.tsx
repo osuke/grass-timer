@@ -6,7 +6,7 @@ interface Props {
   path: string;
 }
 
-const Activity = (props: Props) => (
+const Activity = (props: Props): h.JSX.Element => (
   <div>
     <Header name="Activity" />
     <Calendar />

@@ -10,7 +10,7 @@ const defaultProps: Partial<Props> = {
   children: 'button',
 };
 
-const Button = ({ children, callback }: Props) => (
+const Button = ({ children, callback }: Props): h.JSX.Element => (
   <button className={style.button} onClick={callback}>{children}</button>
 );
 

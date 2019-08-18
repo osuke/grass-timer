@@ -14,7 +14,7 @@ import style from './style.css';
 
 let timerID: NodeJS.Timeout;
 
-export const Timer = ({}: {}) => {
+export const Timer = (props: {}): h.JSX.Element => {
   const { state, dispatch } = useContext(GlobalStateContext);
   const { sec, isPlay, total} = state;
 
@@ -22,8 +22,6 @@ export const Timer = ({}: {}) => {
     if (sec === total && isPlay) {
       dispatch(pauseTimer());
       clearInterval(timerID);
-      // tslint:disable-next-line
-      console.log(state);
     }
   });
 
@@ -48,8 +46,6 @@ export const Timer = ({}: {}) => {
   };
 
   const stop = () => {
-    // tslint:disable-next-line
-    console.log(timerID);
     dispatch(pauseTimer());
     clearInterval(timerID);
   };

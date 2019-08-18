@@ -6,10 +6,6 @@ import { Cell } from './Cell';
 
 const Calendar = (props: {}): h.JSX.Element => {
   const today = moment();
-  // tslint:disable-next-line
-  //console.log(today.endOf('week').date());
-  // tslint:disable-next-line
-  //console.log(today.endOf('week').subtract(1, 'days').date());
 
   const renderActivities = (): h.JSX.Element[] => {
     const colNum = Array.from(Array(53).keys());
@@ -18,8 +14,7 @@ const Calendar = (props: {}): h.JSX.Element => {
       if (weekIndex !== 0) {
         today.add(-1, 'week');
       }
-      // tslint:disable-next-line
-      console.log(today.endOf('week').date());
+
       return (
         <Col>
           {

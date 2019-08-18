@@ -10,7 +10,7 @@ const defaultProps: Partial<Props> = {
   name: 'header',
 };
 
-const Header = ({ name }: Props) => (
+const Header = ({ name }: Props): h.JSX.Element => (
   <div className={style.container}>
     <nav>
       <div className={style.tab}><Link href="/" >Home</Link></div>

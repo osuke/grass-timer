@@ -9,13 +9,11 @@ interface Props {
   elapsed: number;
 }
 
-export const PieTimer = ({ radius, width, total, elapsed }: Props) => {
+export const PieTimer = ({ radius, width, total, elapsed }: Props): h.JSX.Element => {
   const gap = 2 * Math.PI * radius;
   const fillNum = gap * elapsed / total;
   const restTime = total - elapsed;
   const formattedTime = `${pad(Math.floor(restTime / 60))} : ${pad(restTime % 60)}`;
-  // tslint:disable-next-line
-  console.log(total, elapsed);
 
   return (
     <div className={style.container}>

@@ -6,7 +6,7 @@ interface Props {
   path: string;
 }
 
-const Home = (props: Props) => (
+const Home = (props: Props): h.JSX.Element => (
   <div>
     <Header name="Grass Timer" />
     <Timer />

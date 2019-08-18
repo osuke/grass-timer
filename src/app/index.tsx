@@ -21,7 +21,7 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-const Root = () => (
+const Root = (): h.JSX.Element => (
   <Provider>
     <Router>
       <Home path="/" />

@@ -14,7 +14,7 @@ export const GlobalStateContext = createContext<{state: ReducerState, dispatch: 
   dispatch: () => undefined,
 });
 
-export const Provider = ({ children }: Props) => {
+export const Provider = ({ children }: Props): h.JSX.Element => {
   const [ state, dispatch ] = useReducer(reducer, initialState);
 
   return (
