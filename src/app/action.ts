@@ -2,6 +2,7 @@ export const START_TIMER = 'START_TIMER';
 export const RESUME_TIMER = 'RESUME_TIMER';
 export const PAUSE_TIMER = 'PAUSE_TIMER';
 export const RESET_TIMER = 'RESET_TIMER';
+export const END_TIMER = 'END_TIMER';
 export const INCREMENT_TIMER = 'INCREMENT_TIMER';
 
 export interface Action {
@@ -9,6 +10,7 @@ export interface Action {
         typeof RESUME_TIMER |
         typeof PAUSE_TIMER |
         typeof RESET_TIMER |
+        typeof END_TIMER |
         typeof INCREMENT_TIMER;
 }
 
@@ -26,6 +28,10 @@ export const pauseTimer = (): Action => ({
 
 export const resetTimer = (): Action => ({
   type: RESET_TIMER,
+});
+
+export const endTimer = (): Action => ({
+  type: END_TIMER,
 });
 
 export const incrementTimer = (): Action => ({

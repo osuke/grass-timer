@@ -5,6 +5,7 @@ import {
   resumeTimer,
   pauseTimer,
   resetTimer,
+  endTimer,
   incrementTimer,
 } from '../../action';
 import { GlobalStateContext } from '../Provider';
@@ -20,7 +21,7 @@ export const Timer = (props: {}): h.JSX.Element => {
 
   useEffect(() => {
     if (sec === total && isPlay) {
-      dispatch(pauseTimer());
+      dispatch(endTimer());
       clearInterval(timerID);
     }
   });
