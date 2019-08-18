@@ -1,0 +1,22 @@
+.container {
+  overflow-x: scroll;
+  direction: rtl;
+}
+.inner {
+  padding: 12px;
+  display: inline-block;
+}
+.cal {
+  display: flex;
+}
+.row {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.cell {
+  width: 12px;
+  height: 12px;
+  background: #ebedf0;
+  border-right: solid 2px #fff;
+  border-bottom: solid 2px #fff;
+}

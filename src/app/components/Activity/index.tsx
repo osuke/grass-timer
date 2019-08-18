@@ -1,5 +1,6 @@
 import { h } from 'preact';
 import { Header } from '../Header';
+import { Calendar } from '../Calendar';
 
 interface Props {
   path: string;
@@ -8,7 +9,7 @@ interface Props {
 const Activity = (props: Props) => (
   <div>
     <Header name="Activity" />
-    <div>Activity</div>
+    <Calendar />
   </div>
 );
 
