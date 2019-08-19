@@ -20,3 +20,23 @@
   border-right: solid 2px #fff;
   border-bottom: solid 2px #fff;
 }
+
+.cell0 {
+  background: #ebedf0;
+}
+
+.cell1 {
+  background: #c6e48b;
+}
+
+.cell2 {
+  background: #7bc96f;
+}
+
+.cell3 {
+  background: #239a3b;
+}
+
+.cell4 {
+  background: #196127;
+}

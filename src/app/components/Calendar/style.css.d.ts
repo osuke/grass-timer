@@ -3,3 +3,8 @@ export const inner: string;
 export const cal: string;
 export const row: string;
 export const cell: string;
+export const cell0: string;
+export const cell1: string;
+export const cell2: string;
+export const cell3: string;
+export const cell4: string;
