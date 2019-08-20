@@ -1,9 +1,10 @@
 .container {
   overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
   direction: rtl;
 }
 .inner {
-  padding: 12px;
+  padding: 12px 16px;
   display: inline-block;
 }
 .cal {

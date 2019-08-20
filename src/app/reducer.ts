@@ -92,7 +92,7 @@ export const reducer = (state: ReducerState, action: Action) => {
     case INCREMENT_TIMER:
       return {
         ...state,
-        sec: state.sec + 1,
+        sec: state.sec >= state.total ? state.sec : state.sec + 1,
       };
 
     default:

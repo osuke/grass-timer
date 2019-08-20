@@ -20,7 +20,9 @@ export const Timer = (props: {}): h.JSX.Element => {
   const { sec, isPlay, total} = state;
 
   useEffect(() => {
-    if (sec === total && isPlay) {
+    // tslint:disable-next-line
+    console.log(sec);
+    if (sec >= total && isPlay) {
       dispatch(endTimer());
       clearInterval(timerID);
     }

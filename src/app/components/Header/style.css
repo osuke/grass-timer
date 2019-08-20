@@ -1,12 +1,7 @@
 .container {
   text-align: center;
-  padding: 16px 0;
-  color: #fff;
-}
-.tab {
-  display: inline;
-  padding: 0 8px;
-}
-.tab a {
-  color: #333;
+  padding: 0 16px;
+  height: 44px;
+  line-height: 44px;
+  text-align: left;
 }

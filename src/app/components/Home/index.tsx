@@ -1,15 +1,14 @@
 import { h } from 'preact';
-import { Header } from '../Header';
+import * as style from './style.css';
 import { Timer } from '../Timer';
+import { Calendar } from '../Calendar';
+import { Header } from '../Header';
 
-interface Props {
-  path: string;
-}
-
-const Home = (props: Props): h.JSX.Element => (
-  <div>
-    <Header name="Grass Timer" />
+const Home = (props: {}): h.JSX.Element => (
+  <div className={style.container}>
+    <Header />
     <Timer />
+    <Calendar />
   </div>
 );
 

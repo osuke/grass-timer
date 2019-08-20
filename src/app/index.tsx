@@ -1,11 +1,8 @@
 import { h, render } from 'preact';
-import Router from 'preact-router';
 import 'reset-css';
+import '../style.css';
 import { Provider } from './components/Provider';
 import { Home } from './components/Home';
-import { Activity } from './components/Activity';
-
-
 
 const root = document.querySelector('#app');
 
@@ -23,10 +20,7 @@ if ('serviceWorker' in navigator) {
 
 const Root = (): h.JSX.Element => (
   <Provider>
-    <Router>
-      <Home path="/" />
-      <Activity path="/activity" />
-    </Router>
+    <Home />
   </Provider>
 );
 
