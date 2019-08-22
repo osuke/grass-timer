@@ -4,7 +4,7 @@ import { GlobalStateContext } from '../Provider';
 import moment from 'moment';
 import style from './style.css';
 import { Col } from './Col';
-import { Cell } from './Cell';
+import { Cell, Props as CellProps } from './Cell';
 import { getActivityLevel, getLevel } from '../../utils';
 
 const Calendar = (props: {}): h.JSX.Element => {
@@ -24,8 +24,11 @@ const Calendar = (props: {}): h.JSX.Element => {
     return count;
   };
 
-  const renderActivities = (): h.JSX.Element[] => {
-    const colNum = Array.from(Array(53).keys());
+  function renderActivities(): h.JSX.Element[] {
+    const weekNum = 53;
+    const dayNum = 7;
+    const colNum = Array.from(Array(weekNum).keys());
+    const celNum = Array.from(Array(dayNum).keys());
 
     const cols: h.JSX.Element[] = [...colNum].map((weekVal, weekIndex) => {
       if (weekIndex !== 0) {
@@ -35,24 +38,19 @@ const Calendar = (props: {}): h.JSX.Element => {
       return (
         <Col>
           {
-            [0, 1, 2, 3, 4, 5, 6].map((dateVal, dateIndex) => {
+            [...celNum].map((dateVal, dateIndex) => {
               const dateData = today.endOf('week').subtract(dateIndex, 'days');
               const count = checkActivity(dateData.format('YYYY-MM-DD'));
-              let level = 0;
+              const cellProps: CellProps = {
+                year: dateData.year(),
+                month: dateData.month(),
+                date: dateData.date(),
+                week: weekIndex,
+                level: count ? getLevel(count, levelArr) : 0,
+                count,
+              };
 
-              if (count) {
-                level = getLevel(count, levelArr);
-                // tslint:disable-next-line
-                //console.log(level);
-              }
-
-              return (
-                <Cell
-                  date={dateData.date()}
-                  month={dateData.month() + 1}
-                  level={level}
-                />
-              );
+              return <Cell {...cellProps} />;
             })
           }
         </Col>
@@ -60,7 +58,7 @@ const Calendar = (props: {}): h.JSX.Element => {
     });
 
     return cols;
-  };
+  }
 
   return (
     <div className={style.container}>
