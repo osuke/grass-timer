@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const workboxPlugin = require('workbox-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -48,11 +49,14 @@ module.exports = {
       template: './src/template/index.html'
     }),
     new CleanWebpackPlugin(),
+    new CopyPlugin([
+      { from: 'static', to: '.' },
+    ]),
     new workboxPlugin.GenerateSW({
       swDest: 'sw.js',
       clientsClaim: true,
       skipWaiting: true
-    })
+    }),
   ],
   resolve: {
     extensions: ['.js', '.ts', '.tsx', '.css']
