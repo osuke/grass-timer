@@ -1,10 +1,10 @@
 .container {
-  padding: 0 0 36px;
+  padding: 16px 0 0;
 }
 .buttons {
   display: flex;
   justify-content: center;
-  padding: 20px 0 0;
+  padding: 56px 0 0;
 }
 
 .buttons div {

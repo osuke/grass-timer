@@ -1,15 +1,13 @@
 .button {
-  width: 88px;
-  color: #24292e;
-  outline: 0;
-  display: inline-block;
-  text-align: center;
-  padding: 6px 12px;
   font-size: 14px;
-  border: 1px solid rgba(27,31,35,0.2);
-  border-radius: 0.25em;
-  background-image: linear-gradient(-180deg, #f0f3f6 0%, #e6ebf1 90%);
-  background-position: -0.5em;
-  border-color: rgba(27,31,35,0.35);
-  box-sizing: border-box;
+  color: #fff;
+  border: none;
+  display: inline-block;
+  background: #30b400;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.12), 0px 0px 2px rgba(0, 0, 0, 0.14);
+  width: 114px;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 18px;
+  outline: 0;
 }

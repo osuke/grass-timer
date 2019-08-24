@@ -2,7 +2,7 @@
   position: relative;
   text-align: center;
   background: #fff;
-  height: 294px;
+  height: 278px;
 }
 
 .container::before {
@@ -39,7 +39,7 @@
 
 .container circle {
   fill: transparent;
-  stroke: #239a3b;
+  stroke: #30b400;
 }
 
 .time {
