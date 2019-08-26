@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -57,6 +58,7 @@ module.exports = {
       clientsClaim: true,
       skipWaiting: true
     }),
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
   ],
   resolve: {
     extensions: ['.js', '.ts', '.tsx', '.css']
