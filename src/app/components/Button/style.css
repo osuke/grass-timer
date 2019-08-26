@@ -1,0 +1,13 @@
+.button {
+  font-size: 14px;
+  color: #fff;
+  border: none;
+  display: inline-block;
+  background: #30b400;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.12), 0px 0px 2px rgba(0, 0, 0, 0.14);
+  width: 114px;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 18px;
+  outline: 0;
+}

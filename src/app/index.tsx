@@ -1,4 +1,9 @@
 import { h, render } from 'preact';
+import 'reset-css';
+import '../style.css';
+import { Provider } from './components/Provider';
+import { Home } from './components/Home';
+
 const root = document.querySelector('#app');
 
 if ('serviceWorker' in navigator) {
@@ -13,11 +18,12 @@ if ('serviceWorker' in navigator) {
   });
 }
 
+const Root = (): h.JSX.Element => (
+  <Provider>
+    <Home />
+  </Provider>
+);
+
 if (root) {
-  render((
-  	<div id="foo">
-  		<span>Hello world!</span>
-  		<button onClick={ e => alert("hi!") }>Click Me</button>
-  	</div>
-  ), root);
+  render(<Root />, root);
 }
