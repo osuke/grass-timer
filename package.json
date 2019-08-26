@@ -8,7 +8,7 @@
     "build:dev": "webpack -w --mode=development",
     "build:prod": "webpack --mode=production",
     "dev": "run-p server build:dev",
-    "prod": "run-s lint check-types build:prod",
+    "prod": "run-s lint check-types test build:prod",
     "check-types": "tsc",
     "lint": "tslint -c tslint.json --project ./ 'src/**/*.ts*'",
     "test": "jest"
