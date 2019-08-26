@@ -17,12 +17,10 @@ let timerID: NodeJS.Timeout;
 
 export const Timer = (props: {}): h.JSX.Element => {
   const { state, dispatch } = useContext(GlobalStateContext);
-  const { sec, isPlay, total} = state;
+  const { isPlay, leftTime, intervalTime } = state;
 
   useEffect(() => {
-    // tslint:disable-next-line
-    console.log(sec);
-    if (sec >= total && isPlay) {
+    if (leftTime <= 0 && isPlay) {
       dispatch(endTimer());
       clearInterval(timerID);
     }
@@ -62,7 +60,7 @@ export const Timer = (props: {}): h.JSX.Element => {
   };
 
   const renderStartButton = () => {
-    if (sec === total || sec === 0) {
+    if (leftTime === intervalTime || leftTime === 0) {
       return <Button callback={start}>START</Button>;
     } else {
       return <Button callback={reStart}>RESUME</Button>;
@@ -74,8 +72,8 @@ export const Timer = (props: {}): h.JSX.Element => {
       <PieTimer
         radius={130}
         width={16}
-        total={total}
-        elapsed={sec}
+        leftTime={leftTime}
+        intervalTime={intervalTime}
       />
       <div className={style.buttons}>
         <div>

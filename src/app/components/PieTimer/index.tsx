@@ -5,15 +5,15 @@ import { pad } from '../../utils';
 interface Props {
   radius: number;
   width: number;
-  total: number;
-  elapsed: number;
+  leftTime: number;
+  intervalTime: number;
 }
 
-export const PieTimer = ({ radius, width, total, elapsed }: Props): h.JSX.Element => {
+export const PieTimer = ({ radius, width, leftTime, intervalTime }: Props): h.JSX.Element => {
+  const elapsed = intervalTime - leftTime;
   const gap = 2 * Math.PI * radius;
-  const fillNum = gap * elapsed / total;
-  const restTime = total - elapsed;
-  const formattedTime = `${pad(Math.floor(restTime / 60))} : ${pad(restTime % 60)}`;
+  const fillNum = gap * elapsed / intervalTime;
+  const formattedTime = `${pad(Math.floor(leftTime / 60))} : ${pad(leftTime % 60)}`;
 
   return (
     <div className={style.container}>

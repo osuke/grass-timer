@@ -15,21 +15,32 @@ export interface Log {
 }
 
 export interface ReducerState {
-  total: number;
+  // interval time for 1 session. It's 1500sec.
+  intervalTime: number;
+  // Time when the timer is started or resumed.
+  startTime: moment.Moment;
+  // left time
+  leftTime: number;
+  // time from START_TIMER or RESUME_TIMER to the end.
+  totalTime: number;
+  // Timer is working or not
   isPlay: boolean;
-  sec: number;
+  // log for activity calendar
   log: Log[];
 }
 
+const intervalTime = 1500;
 const storageKey = 'log';
 // fetch activity log from localStorage
 const logStr = window.localStorage.getItem(storageKey);
 const log = logStr ? JSON.parse(logStr) : [];
 
 export const initialState: ReducerState = {
-  total: 1500,
+  intervalTime,
+  startTime: moment(),
+  leftTime: intervalTime,
+  totalTime: intervalTime,
   isPlay: false,
-  sec: 0,
   log,
 };
 
@@ -38,19 +49,21 @@ export const reducer = (state: ReducerState, action: Action) => {
     case START_TIMER:
       return {
         ...state,
+        startTime: moment(),
         isPlay: true,
-        sec: 0,
       };
 
     case RESUME_TIMER:
       return {
         ...state,
+        startTime: moment(),
         isPlay: true,
       };
 
     case PAUSE_TIMER:
       return {
         ...state,
+        totalTime: state.totalTime - moment().diff(state.startTime, 'second'),
         isPlay: false,
       };
 
@@ -85,14 +98,17 @@ export const reducer = (state: ReducerState, action: Action) => {
     case RESET_TIMER:
       return {
         ...state,
+        totalTime: state.intervalTime,
+        leftTime: state.intervalTime,
         isPlay: false,
-        sec: 0,
       };
 
     case INCREMENT_TIMER:
+      const diff = state.totalTime - moment().diff(state.startTime, 'second');
+
       return {
         ...state,
-        sec: state.sec >= state.total ? state.sec : state.sec + 1,
+        leftTime: diff <= 0 ? 0 : diff,
       };
 
     default:
